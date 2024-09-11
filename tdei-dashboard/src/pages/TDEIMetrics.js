@@ -4,7 +4,7 @@ import { Typography, Box } from '@mui/material';
 const TDEIMetrics = () => {
   return (
     <Box sx={{ minHeight: '100vh' }}>
-      <Typography variant="h4">TDEI Metrics</Typography>
+      <Typography variant="h5">TDEI Metrics</Typography>
       <p>Details about TDEI Metrics go here...</p>
     </Box>
   );

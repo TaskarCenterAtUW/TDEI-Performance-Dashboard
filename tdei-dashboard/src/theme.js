@@ -26,6 +26,7 @@ const theme = createTheme({
     },
     h5: {
       fontFamily: '"Open Sans", sans-serif',
+      fontWeight: 'bold', 
     },
     h6: {
       fontFamily: '"Open Sans", sans-serif',
@@ -53,8 +54,9 @@ const theme = createTheme({
     subtitle1: {
       fontFamily: '"Open Sans", sans-serif',
       fontSize: '1.2rem', 
-      fontWeight: 500, 
+      fontWeight: 'bold', 
       lineHeight: 1.2, 
+      color: 'white',
     }
   }
 });
