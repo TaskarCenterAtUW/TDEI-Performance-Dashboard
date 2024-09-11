@@ -33,7 +33,7 @@ const CustomLineChart = ({ data }) => {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top',
+        display : false
       },
       title: {
         display: true,
@@ -49,8 +49,12 @@ const CustomLineChart = ({ data }) => {
           display: true,
           text: 'Months',
         },
+        
       },
       y: {
+        // grid:{
+        //     display: false, 
+        // },
         title: {
           display: true,
           text: 'Downloads',

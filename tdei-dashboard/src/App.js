@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { AppBar, Tabs, Tab, Toolbar, Typography, Box, Container } from "@mui/material";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import SystemUsageMetrics from "./pages/SystemUsageMetrics";
+import SystemUsageMetrics from "./pages/SystemUsageMetrics/SystemUsageMetrics";
 import DataMetrics from "./pages/DataMetrics";
 import TDEIMetrics from "./pages/TDEIMetrics";
 import theme from "./theme";

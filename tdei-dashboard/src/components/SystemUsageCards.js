@@ -9,6 +9,7 @@ import CustomTwoValuesCard from './CustomTwoValuesCard';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import CustomLineChart from './LineChart';
+import ApiMetricsCard from '../pages/SystemUsageMetrics/ApiMetricsCard';
 
 const data = [
     { id: 0, value: 12, label: 'OSW' },
@@ -23,6 +24,21 @@ export default function SystemUsageCards({ details }) {
         "July": 70,
         "August": 65,
         "September": 80
+      };
+      const apiMetrics = {
+        totalApiCalls: 1600,
+        apiCallsByEndpoint: {
+          '/api/v1/datasets': 300,
+          '/api/v1/jobs': 200,
+          '/api/v1/projectGroups': 500,
+          '/api/v1/downloads': 200,
+          '/api/v1/validate': 300,
+          '/api/v1/upload': 300,
+          '/api/v1/uploads': 300,
+          '/api/v1/convert': 300,
+          '/api/v1/create-job': 300,
+          '/api/v1/services': 300,
+        },
       };
     return (
         <>
@@ -88,13 +104,7 @@ export default function SystemUsageCards({ details }) {
                         </Card>
                     </Grid>
                     <Grid item xs={6}>
-                        <CustomTwoValuesCard title={'Dataset Downloads'}
-                            subtitle1={'Downloads'}
-                            value1={122}
-                            subtitle2={'Size Downloaded'}
-                            value2={50}
-                            icon={<CloudDownloadIcon fontSize="large" sx={{ color: '#8ec5fc' }} />}
-                        />
+                    <ApiMetricsCard apiMetrics={apiMetrics} />
                     </Grid>
                 </Grid>
             </Box>

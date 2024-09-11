@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
-import SystemUsageCards from '../components/SystemUsageCards';
-import useGetSystemMetrics from '../hooks/useGetSystemMetrics';
+import SystemUsageCards from '../../components/SystemUsageCards';
+import useGetSystemMetrics from '../../hooks/useGetSystemMetrics';
 
 const SystemUsageMetrics = () => {
   // const { data, error, isLoading, refreshData } = useGetSystemMetrics();
