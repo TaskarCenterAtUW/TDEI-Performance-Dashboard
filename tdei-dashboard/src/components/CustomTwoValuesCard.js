@@ -17,7 +17,6 @@ const CustomTwoValuesCard = ({ title,subtitle1,subtitle2, value1,value2, icon })
       color: '#333',
       position: 'relative',
      }}  
-    //  <CloudUploadIcon fontSize="large" sx={{ color: '#8ec5fc' }} />
   >
     <Box sx={{ position: 'absolute', top: '-30px', backgroundColor: '#ffffff', padding: '8px', borderRadius: '50%',boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',  }}>
     {icon}

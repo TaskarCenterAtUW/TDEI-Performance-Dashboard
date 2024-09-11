@@ -42,7 +42,7 @@ export default function SystemUsageCards({ details }) {
       };
     return (
         <>
-            <Box sx={{ width: '96%', height: 'auto', padding: '16px' }}>
+            <Box sx={{ width: '96%', height: 'auto', padding: '16px'}}>
                 <Grid container spacing={2}>
                     <Grid item xs={8}>
                         <Grid container spacing={2}>

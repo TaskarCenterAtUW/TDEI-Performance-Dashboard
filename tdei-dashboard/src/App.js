@@ -71,7 +71,7 @@ function App() {
           </Tabs>
         </Toolbar>
       </AppBar>
-      <Box sx={{ marginTop: "100px", marginRight:'20px',marginLeft:'20px' }}> 
+      <Box sx={{ marginTop: "100px", marginRight:'30px',marginLeft:'20px' }}> 
         <Box ref={systemUsageRef}>
           <SystemUsageMetrics />
         </Box>

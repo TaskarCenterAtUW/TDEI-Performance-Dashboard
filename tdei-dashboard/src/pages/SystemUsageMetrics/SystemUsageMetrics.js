@@ -9,8 +9,8 @@ const SystemUsageMetrics = () => {
   //   return <Typography>Loading...</Typography>;
   // }
   return (
-    <Box sx={{ minHeight: '100vh' }}>
-      <Typography variant="h5">System Usage Metrics</Typography>
+    <Box sx={{ minHeight: 'auto' }}>
+      <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: '8px', color: '#333',padding: '16px'  }}>System Usage Metrics</Typography>
       <SystemUsageCards  />
       {/* details={data.systemUsageMetrics.systemMetrics} */}
     </Box>
