@@ -31,23 +31,24 @@ const OSWStatsCard = ({ osw }) => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
+                background: 'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)',
+                // background: 'linear-gradient(135deg, #873EF2 0%, #E43FF2 100%)',
                 borderRadius: '16px',
                 padding: '20px',
                 boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-                height: '220px',
+                height: '180px',
             }}
         >
             <Box sx={{ width: '20%', padding: '16px' }}>
-                <Typography variant="h5" sx={{ fontWeight: 'bold', marginBottom: '8px', color: '#333' }}>
+                <Typography variant="h5" sx={{ fontWeight: 'bold', marginBottom: '8px', color: 'white' }}>
                     OSW Stats
                 </Typography>
-                <Typography variant="h6" sx={{ color: '#555', marginBottom: '4px' }}>Total Datasets</Typography>
-                <Typography variant="h5" sx={{ fontWeight: 'bold', marginBottom: '12px' }}>
+                <Typography variant="h6" sx={{ color: 'white', marginBottom: '4px' }}>Total Datasets</Typography>
+                <Typography variant="h5" sx={{ fontWeight: 'bold', marginBottom: '12px',color: 'white' }}>
                     {totalDatasets}
                 </Typography>
-                <Typography variant="h6" sx={{ color: '#555', marginBottom: '4px' }}>Total Size (GB)</Typography>
-                <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+                <Typography variant="h6" sx={{ color: 'white', marginBottom: '4px' }}>Total Size (GB)</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 'bold',color: 'white' }}>
                     {totalSizeGB} GB
                 </Typography>
             </Box>
@@ -57,7 +58,7 @@ const OSWStatsCard = ({ osw }) => {
                         <Card
                             sx={{
                                 position: 'relative',
-                                minHeight: '140px',
+                                minHeight: '130px',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 justifyContent: 'center',

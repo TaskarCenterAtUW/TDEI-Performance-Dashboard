@@ -18,12 +18,12 @@ const ApiMetricsCard = ({ apiMetrics }) => {
     >
       <Box
         sx={{
-          background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)', 
+          background: 'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)',
           padding: '18px', 
           textAlign: 'center', 
         }}
       >
-        <Typography variant="h5" sx={{ fontWeight: 'bold' }}> 
+        <Typography variant="h5" sx={{ fontWeight: 'bold', color:'white' }}> 
           Total API Calls: {totalApiCalls}
         </Typography>
       </Box>
