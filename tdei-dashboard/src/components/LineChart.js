@@ -21,10 +21,10 @@ const CustomLineChart = ({ data }) => {
       {
         label: 'Downloads per Month',
         data: downloadCounts,  
-        borderColor: 'rgba(75, 192, 192, 1)',  
-        backgroundColor: 'rgba(75, 192, 192, 0.2)', 
+        borderColor: '#873EF2',  
+        backgroundColor: '#873EF2', 
         borderWidth: 2,
-        pointBackgroundColor: 'rgba(75, 192, 192, 1)',  
+        pointBackgroundColor: '#873EF2',  
         tension: 0.4,  
       },
     ],
@@ -52,9 +52,6 @@ const CustomLineChart = ({ data }) => {
         
       },
       y: {
-        // grid:{
-        //     display: false, 
-        // },
         title: {
           display: true,
           text: 'Downloads',

@@ -5,6 +5,8 @@ import CategoryIcon from '@mui/icons-material/Category';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import RouteIcon from '@mui/icons-material/Route';
 import AddLocationIcon from '@mui/icons-material/AddLocation';
+import StorageIcon from '@mui/icons-material/Storage';
+import BarChartIcon from '@mui/icons-material/BarChart';
 
 const iconsMap = {
     num_crossings: <DirectionsWalkIcon fontSize="large" />,
@@ -43,14 +45,30 @@ const OSWStatsCard = ({ osw }) => {
                 <Typography variant="h5" sx={{ fontWeight: 'bold', marginBottom: '8px', color: 'white' }}>
                     OSW Stats
                 </Typography>
-                <Typography variant="h6" sx={{ color: 'white', marginBottom: '4px' }}>Total Datasets</Typography>
-                <Typography variant="h5" sx={{ fontWeight: 'bold', marginBottom: '12px',color: 'white' }}>
-                    {totalDatasets}
-                </Typography>
-                <Typography variant="h6" sx={{ color: 'white', marginBottom: '4px' }}>Total Size (GB)</Typography>
-                <Typography variant="h6" sx={{ fontWeight: 'bold',color: 'white' }}>
-                    {totalSizeGB} GB
-                </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <StorageIcon sx={{ color: '#fff', fontSize: '24px' }} />
+                        <Box>
+                            <Typography variant="subtitle2" sx={{ color: '#f0f0f0', fontWeight: 'bold' }}>
+                                Datasets
+                            </Typography>
+                            <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#fff' }}>
+                                {totalDatasets}
+                            </Typography>
+                        </Box>
+                    </Box>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop:'10px' }}>
+                    <BarChartIcon sx={{ color: '#fff', fontSize: '24px' }} />
+                    <Box>
+                        <Typography variant="subtitle2" sx={{ color: '#f0f0f0', fontWeight: 'bold' }}>
+                            Size (GB)
+                        </Typography>
+                        <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#fff' }}>
+                            {totalSizeGB} GB
+                        </Typography>
+                    </Box>
+                </Box>
             </Box>
             <Grid container spacing={2} sx={{ width: '70%' }}>
                 {Object.entries(aggregatedStats).map(([statName, statValue]) => (

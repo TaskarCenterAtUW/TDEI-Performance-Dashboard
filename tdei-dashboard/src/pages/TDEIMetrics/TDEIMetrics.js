@@ -44,10 +44,16 @@ const TDEIMetrics = () => {
           </Grid>
           <Grid item xs={12} sm={3} gap={5}>
             <Card sx={{
-              padding: '16px', textAlign: 'center', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
-              transition: 'transform 0.3s',
-              '&:hover': { transform: 'scale(1.05)', boxShadow: 10 },
-              transition: 'transform 0.3s',
+                 padding: '16px',
+                 textAlign: 'center',
+                 boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+                 background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
+                 borderRadius: '12px', 
+                 transition: 'transform 0.3s',
+                 '&:hover': {
+                   transform: 'scale(1.05)',
+                   boxShadow: 10,
+                 },
             }}>
               <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <CustomGauge
@@ -60,10 +66,16 @@ const TDEIMetrics = () => {
           </Grid>
           <Grid item xs={12} sm={3} gap={5}>
             <Card sx={{
-              padding: '16px', textAlign: 'center', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
-              transition: 'transform 0.3s',
-              '&:hover': { transform: 'scale(1.05)', boxShadow: 10 },
-              transition: 'transform 0.3s',
+                 padding: '16px',
+                 textAlign: 'center',
+                 boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+                 background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)', 
+                 borderRadius: '12px', 
+                 transition: 'transform 0.3s',
+                 '&:hover': {
+                   transform: 'scale(1.05)',
+                   boxShadow: 10,
+                 },
             }}>
               <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
                 <CustomGauge

@@ -98,12 +98,12 @@ export default function SystemUsageCards({ details }) {
                             </Stack>
                         </Card>
                     </Grid>
-                    <Grid item xs={6}>
-                        <Card>
+                    <Grid item xs={6} sx={{marginTop:'10px'}}>
+                        <Card sx={{ boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)'}}>
                         <CustomLineChart data={downloadsPerMonth} />
                         </Card>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={6} sx={{marginTop:'10px'}}>
                     <ApiMetricsCard apiMetrics={apiMetrics} />
                     </Grid>
                 </Grid>
