@@ -47,13 +47,13 @@ export default function SystemUsageCards({ details }) {
                     <Grid item xs={8}>
                         <Grid container spacing={2}>
                             <Grid item xs={4}>
-                                <DashboardCard title={'Users'} value={122} icon={<GroupIcon />} />
+                                <DashboardCard title={'Users'} value={122} icon={<GroupIcon />}  gradient={'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)'} color={'#fff'}/>
                             </Grid>
                             <Grid item xs={4}>
-                                <DashboardCard title={'Project Groups'} value={222} icon={<Diversity2Icon />} />
+                                <DashboardCard title={'Project Groups'} value={222} icon={<Diversity2Icon />} gradient={'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)'} color={'#fff'}/>
                             </Grid>
                             <Grid item xs={4}>
-                                <DashboardCard title={'Services'} value={322} icon={<MiscellaneousServicesIcon />} />
+                                <DashboardCard title={'Services'} value={322} icon={<MiscellaneousServicesIcon />} gradient={'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)'} color={'#fff'}/>
                             </Grid>
                             <Grid item xs={6} sx={{ marginTop: '20px' }}>
                                 <CustomTwoValuesCard

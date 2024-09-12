@@ -3,7 +3,7 @@ import { AppBar, Tabs, Tab, Toolbar, Typography, Box, Container } from "@mui/mat
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import SystemUsageMetrics from "./pages/SystemUsageMetrics/SystemUsageMetrics";
 import DataMetrics from "./pages/DataMetrics/DataMetrics";
-import TDEIMetrics from "./pages/TDEIMetrics";
+import TDEIMetrics from "./pages/TDEIMetrics/TDEIMetrics";
 import theme from "./theme";
 
 function App() {

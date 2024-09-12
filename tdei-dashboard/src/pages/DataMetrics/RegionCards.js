@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Box } from '@mui/material';
 import CustomGradientCard from '../../components/CustomGradientCard';
 import { gradients } from '../../utils/utils';
+import StorageIcon from '@mui/icons-material/Storage';
 
 const RegionCards = ({ specificRegionMetrics }) => {
     const cities = Object.entries(specificRegionMetrics);
@@ -23,6 +24,9 @@ const RegionCards = ({ specificRegionMetrics }) => {
                             totalDatasets={metrics.totalDatasets}
                             totalSizeGB={metrics.totalSizeGB}
                             gradient={gradients[index % gradients.length]}
+                            helpText1={'Datasets'}
+                            helpText2={'GB'}
+                            icon={<StorageIcon fontSize="large" />}
                         />
                     </Grid>
                 ))}

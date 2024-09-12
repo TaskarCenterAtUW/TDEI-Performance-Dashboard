@@ -1,9 +1,7 @@
 import React from 'react';
 import { Grid, Box, Card, Typography } from '@mui/material';
-import StorageIcon from '@mui/icons-material/Storage';
 
-
-const CustomGradientCard = ({ title, totalDatasets, totalSizeGB, gradient }) => {
+const CustomGradientCard = ({ title, totalDatasets, totalSizeGB,icon, helpText1,helpText2 }) => {
   return (
     <Card
       sx={{
@@ -12,7 +10,6 @@ const CustomGradientCard = ({ title, totalDatasets, totalSizeGB, gradient }) => 
         boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
         background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
         color: 'black',
-        minHeight: '100px',
       }}
     >
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -21,12 +18,12 @@ const CustomGradientCard = ({ title, totalDatasets, totalSizeGB, gradient }) => 
             {title}
           </Typography>
           <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: '4px' }}>
-            {totalDatasets} Datasets
+            {totalDatasets} {helpText1}
           </Typography>
-          <Typography variant="h6">{totalSizeGB} GB</Typography>
+          <Typography variant="h6">{totalSizeGB} {helpText2}</Typography>
         </Box>
         <Box>
-          <StorageIcon fontSize="large" />
+          {icon}
         </Box>
       </Box>
     </Card>

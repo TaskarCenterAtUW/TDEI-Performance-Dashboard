@@ -73,7 +73,7 @@ const OSWStatsCard = ({ osw }) => {
                             <Box sx={{ position: 'absolute', top: '-30px', backgroundColor: '#ffffff', padding: '8px', borderRadius: '50%', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)' }}>
                                 {iconsMap[statName] || <CategoryIcon fontSize="large" />}
                             </Box>
-                            <Typography variant="h4" sx={{ color: '#4CAF50', fontWeight: 'bold', marginTop: '50px' }}>
+                            <Typography variant="h4" sx={{ color: 'black', fontWeight: 'bold', marginTop: '50px' }}>
                                 {statValue}
                             </Typography>
                             <Typography variant="body1" sx={{ marginTop: '8px', fontWeight: 'bold', color: '#333' }}>
