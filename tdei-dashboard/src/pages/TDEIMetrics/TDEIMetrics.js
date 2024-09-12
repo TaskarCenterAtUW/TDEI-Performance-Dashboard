@@ -33,8 +33,8 @@ const TDEIMetrics = () => {
         <AppMetricsCards tdeiAppMetrics={tdeiAppMetrics} />
         <Grid container spacing={2} sx={{ paddingTop: '30px' }}>
           <Grid item xs={12} sm={6}>
-            <Card sx={{ padding: '16px', textAlign: 'center',boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)'}}>
-              <Box sx={{ width: '100%', textAlign: 'center', marginBottom: '20px' }}>
+            <Card sx={{ padding: '16px', textAlign: 'center',boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)', height: '370px'}}>
+              <Box sx={{ width: '100%', textAlign: 'center', marginBottom: '20px', height:'300px' }}>
                 <Typography variant="h5" component="h2" >
                   Satisfaction Rates by Category
                 </Typography>
@@ -44,6 +44,7 @@ const TDEIMetrics = () => {
           </Grid>
           <Grid item xs={12} sm={3} gap={5}>
             <Card sx={{
+                  height: '370px',
                  padding: '16px',
                  textAlign: 'center',
                  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
@@ -66,12 +67,14 @@ const TDEIMetrics = () => {
           </Grid>
           <Grid item xs={12} sm={3} gap={5}>
             <Card sx={{
+              height: '370px',
                  padding: '16px',
                  textAlign: 'center',
                  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
                  background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)', 
                  borderRadius: '12px', 
                  transition: 'transform 0.3s',
+                 display: 'flex', justifyContent: 'center', alignItems: 'center',
                  '&:hover': {
                    transform: 'scale(1.05)',
                    boxShadow: 10,

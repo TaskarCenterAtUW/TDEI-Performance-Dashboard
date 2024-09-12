@@ -26,7 +26,7 @@ const CustomGauge = ({ color, percentage, title }) => {
 
   const settings = {
     width: 200,
-    height: 370,
+    height: 300,
     value: value, 
   };
 

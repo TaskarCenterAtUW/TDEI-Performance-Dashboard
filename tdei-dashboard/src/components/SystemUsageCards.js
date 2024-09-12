@@ -99,7 +99,7 @@ export default function SystemUsageCards({ details }) {
                         </Card>
                     </Grid>
                     <Grid item xs={6} sx={{marginTop:'10px'}}>
-                        <Card sx={{ boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)'}}>
+                        <Card sx={{ boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)', height:'375px'}}>
                         <CustomLineChart data={downloadsPerMonth} />
                         </Card>
                     </Grid>
