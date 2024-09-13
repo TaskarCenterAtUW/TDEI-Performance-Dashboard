@@ -1,0 +1,85 @@
+{
+    "systemUsageMetrics": {
+        "systemMetrics": {
+            "totalUsers": 1250,
+            "totalServices": 45,
+            "totalProjectGroups": 12,
+            "servicesByType": {
+                "osw": 15,
+                "flex": 10,
+                "pathways": 20
+            }
+        },
+        "datasetMetrics": {
+            "totalUploads": {
+                "count": 300,
+                "totalSizeGB": 1500
+            },
+            "totalDownloads": {
+                "count": 500,
+                "totalSizeGB": 2000
+            },
+            "downloadsPerMonth": {
+                "April": 45,
+                "May": 60,
+                "June": 55,
+                "July": 70,
+                "August": 65,
+                "September": 80
+            }
+        },
+        "apiMetrics": {
+            "totalApiCalls": 1600,
+            "apiCallsByEndpoint": {
+                "/api/v1/datasets": 300,
+                "/api/v1/jobs": 200,
+                "/api/v1/project-groups": 500,
+                "/api/v1/validate": 800,
+                "/api/v1/services": 100,
+                "/api/v1/users": 300,
+                "/api/v1/createJob": 900
+            }
+        }
+    },
+    "dataMetrics": {
+        "datasetsByType": {
+            "osw": {
+                "totalDatasets": 100,
+                "totalSizeGB": 500,
+                "aggregatedStats": {
+                    "num_crossings": 500,
+                    "length_of_sidewalks_km": 120.5,
+                    "num_edges": 400,
+                    "num_nodes": 200,
+                    "concave_hull_area_km2": 50.7
+                }
+            },
+            "flex": {
+                "totalDatasets": 50,
+                "totalSizeGB": 300
+            },
+            "pathways": {
+                "totalDatasets": 75,
+                "totalSizeGB": 700
+            }
+        },
+        "specificRegionMetrics": {
+            "kent_city": {
+                "totalDatasets": 10,
+                "totalSizeGB": 50
+            },
+            "vancouver_city": {
+                "totalDatasets": 8,
+                "totalSizeGB": 40
+            },
+            "Olympia": {
+                "totalDatasets": 8,
+                "totalSizeGB": 40
+            },
+            "Tacoma": {
+                "totalDatasets": 8,
+                "totalSizeGB": 40
+            }
+        }
+    }
+}

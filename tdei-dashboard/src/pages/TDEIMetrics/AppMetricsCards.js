@@ -5,6 +5,9 @@ import CardTravelIcon from '@mui/icons-material/CardTravel';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
+import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
+import NoCrashIcon from '@mui/icons-material/NoCrash';
 
 const AppMetricsCards = ({ tdeiAppMetrics }) => {
     const attemptedTrips = tdeiAppMetrics?.accessMapMetrics?.tripResults?.attempted;
@@ -24,7 +27,7 @@ const AppMetricsCards = ({ tdeiAppMetrics }) => {
                     <DashboardCard
                         title={'Annual Trips'}
                         value={tdeiAppMetrics.accessMapMetrics.annualTrips}
-                        icon={<CardTravelIcon />}
+                        icon={<AirportShuttleIcon />}
                         gradient={'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)'}
                         color={'#fff'}
                     />
@@ -54,7 +57,7 @@ const AppMetricsCards = ({ tdeiAppMetrics }) => {
                     <DashboardCard
                         title={'Trips Complete Ratio'}
                         value={tripRatio}
-                        icon={<AppRegistrationIcon />}
+                        icon={<NoCrashIcon />}
                         gradient={'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)'}
                         color={'#fff'}
                     />
@@ -69,7 +72,7 @@ const AppMetricsCards = ({ tdeiAppMetrics }) => {
                     <DashboardCard
                         title={'Paying Tenants'}
                         value={tdeiAppMetrics.payingTenants}
-                        icon={<AttachMoneyIcon />}
+                        icon={<PermContactCalendarIcon />}
                         gradient={'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)'}
                         color={'#fff'}
                     />

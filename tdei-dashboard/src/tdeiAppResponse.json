@@ -1,0 +1,22 @@
+{
+    "tdeiAppMetrics": {
+        "accessMapMetrics": {
+            "annualTrips": 123456,
+            "uniqueConfigs": 789,
+            "tripResults": {
+                "attempted": 10000,
+                "completed": 8500
+            },
+            "satisfactionRates": {
+                "accessMap": 4.5,
+                "audiom": 4.2,
+                "walkshed": 4.3
+            }
+        },
+        "routeMetrics": {
+            "routeCoverage": 70.3,
+            "wheelchairValidation": 88.6
+        },
+        "payingTenants": 25
+    }
+}
