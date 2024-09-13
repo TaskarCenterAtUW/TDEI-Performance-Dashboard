@@ -43,7 +43,7 @@ const CustomStatsCard = ({ title, totalDatasets, totalSizeGB }) => {
           <BarChartIcon sx={{ color: '#fff', fontSize: '24px' }} />
           <Box>
             <Typography variant="subtitle2" sx={{ color: '#f0f0f0',fontWeight: 'bold' }}>
-              Size (GB)
+              Total Size 
             </Typography>
             <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#fff' }}>
               {totalSizeGB} GB

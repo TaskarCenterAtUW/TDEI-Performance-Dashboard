@@ -47,7 +47,7 @@ const TDEIMetrics = () => {
                 <CustomGauge
                   color={'#873EF2'}
                   percentage={routeMetrics?.routeCoverage}
-                  title="Route Coverage"
+                  title="Route Coverage %"
                 />
               </Box>
             </Card>
@@ -72,11 +72,10 @@ const TDEIMetrics = () => {
               }}
             >
               <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                {/* Pass wheelchair validation percentage */}
                 <CustomGauge
                   color={'#004fff'}
                   percentage={routeMetrics?.wheelchairValidation}
-                  title="Wheelchair Validation"
+                  title="Wheelchair Validation %"
                 />
               </Box>
             </Card>

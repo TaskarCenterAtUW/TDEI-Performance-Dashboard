@@ -41,7 +41,7 @@ const CustomTwoValuesCard = ({ title,subtitle1,subtitle2, value1,value2, icon })
       </Box>
       <Box sx={{ textAlign: 'center' }}>
         <Typography variant="h4" sx={{ fontWeight: 'bold' }}>
-        {value2} <span style={{ fontSize: '18px', fontWeight: 'normal' }}>gb</span>
+        {value2} <span style={{ fontSize: '18px', fontWeight: 'normal' }}>GB</span>
         </Typography>
         <Typography variant="body2" sx={{ color: '#666' }}>
         {subtitle2}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Box, Card, Stack, Typography } from '@mui/material';
-import { PieChart } from '@mui/x-charts/PieChart';
+import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
 import DashboardCard from './DashboardCard';
 import GroupIcon from '@mui/icons-material/Group';
 import Diversity2Icon from '@mui/icons-material/Diversity2';
@@ -11,8 +11,10 @@ import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import CustomLineChart from './LineChart';
 import ApiMetricsCard from '../pages/SystemUsageMetrics/ApiMetricsCard';
 
+const valueFormatter = (value) => `${value}%`;
+
 export default function SystemUsageCards({ details }) {
-    const { systemMetrics = {}, datasetMetrics = {}, apiMetrics = {} } = details;
+  const { systemMetrics = {}, datasetMetrics = {}, apiMetrics = {} } = details;
 
   const servicesData = [
     { id: 0, value: systemMetrics.servicesByType.osw, label: 'OSW' },
@@ -57,7 +59,7 @@ export default function SystemUsageCards({ details }) {
                 title={'Dataset Uploads'}
                 subtitle1={'Uploads'}
                 value1={datasetMetrics.totalUploads.count}
-                subtitle2={'Size Uploaded (GB)'}
+                subtitle2={'Size Uploaded'}
                 value2={datasetMetrics.totalUploads.totalSizeGB}
                 icon={<CloudUploadIcon fontSize="large" sx={{ color: '#8ec5fc' }} />}
               />
@@ -67,7 +69,7 @@ export default function SystemUsageCards({ details }) {
                 title={'Dataset Downloads'}
                 subtitle1={'Downloads'}
                 value1={datasetMetrics.totalDownloads.count}
-                subtitle2={'Size Downloaded (GB)'}
+                subtitle2={'Size Downloaded'}
                 value2={datasetMetrics.totalDownloads.totalSizeGB}
                 icon={<CloudDownloadIcon fontSize="large" sx={{ color: '#8ec5fc' }} />}
               />
@@ -75,20 +77,46 @@ export default function SystemUsageCards({ details }) {
           </Grid>
         </Grid>
         <Grid item xs={4}>
-          <Card sx={{ height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Stack>
-              <Typography>Services By Type</Typography>
+          <Card sx={{
+            height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
+            background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
+            borderRadius: '12px',
+            transition: 'transform 0.3s',
+            '&:hover': {
+              transform: 'scale(1.05)',
+              boxShadow: 10,
+            },
+          }}>
+            <Box>
+              <Typography variant="h6" sx={{
+                marginBottom: '12px',
+                fontWeight: 'bold',
+                color: '#333',
+                display: 'flex', justifyContent: 'center', alignItems: 'center'
+              }}>
+                Services By Type
+              </Typography>
               <PieChart
-                series={[
-                  {
-                    data: servicesData,
-                    outerRadius: 100,
+               series={[
+                {
+                  arcLabel: (item) => `${item.value}%`, 
+                  arcLabelMinAngle: 35, 
+                  arcLabelRadius: '60%',
+                  data: servicesData, 
+                  valueFormatter, 
+                },
+              ]}
+              tooltip={{ show: false }}
+                sx={{
+                  [`& .${pieArcLabelClasses.root}`]: {
+                    fontWeight: 'bold', 
+                    fill: '#fff', 
                   },
-                ]}
+                }}
                 width={400}
                 height={200}
               />
-            </Stack>
+            </Box>
           </Card>
         </Grid>
         <Grid item xs={6} sx={{ marginTop: '10px' }}>

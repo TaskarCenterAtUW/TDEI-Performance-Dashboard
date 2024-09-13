@@ -3,17 +3,18 @@ import { Box, Grid, Card, Typography, Avatar } from '@mui/material';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import CategoryIcon from '@mui/icons-material/Category';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import RouteIcon from '@mui/icons-material/Route';
-import AddLocationIcon from '@mui/icons-material/AddLocation';
+import ClearIcon from '@mui/icons-material/Clear';
 import StorageIcon from '@mui/icons-material/Storage';
 import BarChartIcon from '@mui/icons-material/BarChart';
+import CommitIcon from '@mui/icons-material/Commit'; 
+import LandscapeIcon from '@mui/icons-material/Landscape';
 
 const iconsMap = {
-    num_crossings: <DirectionsWalkIcon fontSize="large" />,
-    length_of_sidewalks_km: <RouteIcon fontSize="large" />,
-    num_edges: <CategoryIcon fontSize="large" />,
+    num_crossings: <ClearIcon fontSize="large" />,
+    length_of_sidewalks_km: <DirectionsWalkIcon fontSize="large" />,
+    num_edges: <CommitIcon fontSize="large" />,
     num_nodes: <LocationOnIcon fontSize="large" />,
-    concave_hull_area_km2: <AddLocationIcon fontSize="large" />,
+    concave_hull_area_km2: <LandscapeIcon fontSize="large" />,
 };
 
 const customLabels = {
@@ -62,7 +63,7 @@ const OSWStatsCard = ({ osw }) => {
                     <BarChartIcon sx={{ color: '#fff', fontSize: '24px' }} />
                     <Box>
                         <Typography variant="subtitle2" sx={{ color: '#f0f0f0', fontWeight: 'bold' }}>
-                            Size (GB)
+                            Total Size 
                         </Typography>
                         <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#fff' }}>
                             {totalSizeGB} GB
