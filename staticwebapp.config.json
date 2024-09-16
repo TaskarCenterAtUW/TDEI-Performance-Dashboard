@@ -4,8 +4,8 @@
     },
     "routes": [
         {
-            "route": "/tdei-dashboard/*",
-            "rewrite": "/tdei-dashboard/index.html"
+            "route": "/*",
+            "rewrite": "/index.html"
         }
     ]
 }

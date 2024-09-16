@@ -1,0 +1,53 @@
+name: Azure Static Web Apps CI/CD
+
+on:
+    workflow_dispatch:
+
+jobs:
+  build_and_deploy_job:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          node-version: [18.x]
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      
+          # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    #   - name: Create env file
+    #     run: |
+    #           touch .env
+    #           echo REACT_APP_URL=${{ vars.REACT_APP_URL }} >> .env
+    #           echo REACT_APP_TM_URL=${{ vars.REACT_APP_TM_URL }} >> .env
+    #           echo CI=false >> .env
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+    #   - run: |
+    #         touch .env
+    #         echo REACT_APP_URL=${{ vars.REACT_APP_URL }} >> .env
+    #         echo REACT_APP_TM_URL=${{ vars.REACT_APP_TM_URL }} >> .env
+    #         echo CI=false >> .env
+      - run: cd tdei-dashboard
+      - run: npm i --legacy-peer-deps
+      - run: CI=false npm run build --if-present
+      - run: npm run cp:config
+
+      
+
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: "upload"
+          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: "tdei-dashboard/build" # App source code path
+          api_location: "" # Api source code path - optional
+          output_location: "" # Built app content directory - optional
+          skip_app_build: true
