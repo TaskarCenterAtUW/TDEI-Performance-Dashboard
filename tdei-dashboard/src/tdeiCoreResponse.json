@@ -64,19 +64,27 @@
             }
         },
         "specificRegionMetrics": {
-            "kent_city": {
+            "king_county": {
                 "totalDatasets": 10,
                 "totalSizeGB": 50
             },
-            "vancouver_city": {
+            "snohomish_county": {
                 "totalDatasets": 8,
                 "totalSizeGB": 40
             },
-            "Olympia": {
+            "Multnomah_county": {
+                "totalDatasets": 5,
+                "totalSizeGB": 20
+            },
+            "Columbia_county": {
                 "totalDatasets": 8,
                 "totalSizeGB": 40
             },
-            "Tacoma": {
+            "Harford_county": {
+                "totalDatasets": 3,
+                "totalSizeGB": 15
+            },
+            "Baltimore_county": {
                 "totalDatasets": 8,
                 "totalSizeGB": 40
             }
