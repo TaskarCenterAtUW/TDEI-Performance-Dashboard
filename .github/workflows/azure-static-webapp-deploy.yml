@@ -32,12 +32,12 @@ jobs:
     #         echo REACT_APP_URL=${{ vars.REACT_APP_URL }} >> .env
     #         echo REACT_APP_TM_URL=${{ vars.REACT_APP_TM_URL }} >> .env
     #         echo CI=false >> .env
-      - run: cd tdei-dashboard
-      - run: npm i --legacy-peer-deps
-      - run: CI=false npm run build --if-present
-      - run: npm run cp:config
-
-      
+      - run: |
+            cd tdei-dashboard
+            npm i --legacy-peer-deps
+            CI=false npm run build --if-present
+            npm run cp:config
+            
 
       - name: Build And Deploy
         id: builddeploy
