@@ -37,7 +37,7 @@ export default function SystemUsageCards({ details }) {
             <Grid item xs={4}>
               <DashboardCard
                 title={'Users'}
-                value={systemMetrics.totalUsers ?? "N/A"}
+                value={systemMetrics.totalUsers ?? "0"}
                 icon={<GroupIcon />}
                 gradient={'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)'}
                 color={'#fff'}
@@ -46,7 +46,7 @@ export default function SystemUsageCards({ details }) {
             <Grid item xs={4}>
               <DashboardCard
                 title={'Project Groups'}
-                value={systemMetrics.totalProjectGroups ?? "N/A"}
+                value={systemMetrics.totalProjectGroups ?? "0"}
                 icon={<Diversity2Icon />}
                 gradient={'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)'}
                 color={'#fff'}

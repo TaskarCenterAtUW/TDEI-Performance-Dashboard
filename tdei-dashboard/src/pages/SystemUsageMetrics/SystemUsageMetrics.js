@@ -3,6 +3,7 @@ import { Typography, Box } from '@mui/material';
 import SystemUsageCards from '../../components/SystemUsageCards';
 import useGetSystemMetrics from '../../hooks/useGetSystemMetrics';
 import tdeiCoreResponse from '../../tdeiCoreResponse.json';
+import CryptoJS from 'crypto-js';
 
 const SystemUsageMetrics = () => {
   const { data, error, isLoading } = useGetSystemMetrics();

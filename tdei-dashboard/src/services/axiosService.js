@@ -1,6 +1,6 @@
 import axios from 'axios';
 import CryptoJS from 'crypto-js';
-import { PRIVATE_KEY, ENCRYPTED_KEY } from '../utils/contants';
+import { PKI, ENCRYPTED_KEY } from '../utils/contants';
 
 // Create an Axios instance
 const api = axios.create({
@@ -10,17 +10,17 @@ const api = axios.create({
 });
 
 // Function to decrypt the API key
-const decryptAPIKey = () => {
-  const bytes = CryptoJS.AES.decrypt(ENCRYPTED_KEY, PRIVATE_KEY);
+const decrypt = () => {
+  const bytes = CryptoJS.AES.decrypt(ENCRYPTED_KEY, PKI);
   return bytes.toString(CryptoJS.enc.Utf8);
 };
 
 // Request Interceptor
 api.interceptors.request.use(
   (config) => {
-    const decryptedKey = decryptAPIKey(); 
-    if (decryptedKey) {
-      config.headers['X-API-KEY'] = decryptedKey;  
+    const decryptedVal = decrypt(); 
+    if (decryptedVal) {
+      config.headers['X-API-KEY'] = decryptedVal;  
     }
     return config;
   },
