@@ -9,11 +9,11 @@ const SystemUsageMetrics = () => {
   const [updatedMetrics, setUpdatedMetrics] = useState(tdeiCoreResponse.systemUsageMetrics);
 
   useEffect(() => {
-    // if API data is available and contains systemMetrics
     if (data && data.systemMetrics) {
       setUpdatedMetrics((prevMetrics) => ({
         ...prevMetrics,
         systemMetrics: data.systemMetrics, 
+        datasetMetrics: data.datasetMetrics
       }));
     }
   }, [data]);
@@ -23,7 +23,7 @@ const SystemUsageMetrics = () => {
       <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: '8px', color: '#333', padding: '16px' }}>
         System Usage Metrics
       </Typography>
-     <SystemUsageCards details={updatedMetrics} />
+      <SystemUsageCards details={updatedMetrics} />
     </Box>
   );
 };

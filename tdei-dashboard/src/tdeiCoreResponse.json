@@ -1,31 +1,26 @@
 {
     "systemUsageMetrics": {
         "systemMetrics": {
-            "totalUsers": 1250,
-            "totalServices": 45,
-            "totalProjectGroups": 12,
+            "totalUsers": 0,
+            "totalServices": 0,
+            "totalProjectGroups": 0,
             "servicesByType": {
-                "osw": 15,
-                "flex": 10,
-                "pathways": 20
+                "osw": 0,
+                "flex": 0,
+                "pathways": 0
             }
         },
         "datasetMetrics": {
             "totalUploads": {
-                "count": 300,
-                "totalSizeGB": 1500
+                "count": 0,
+                "totalSizeGB": 0
             },
             "totalDownloads": {
-                "count": 500,
-                "totalSizeGB": 2000
+                "count": 0,
+                "totalSizeGB": 0
             },
             "downloadsPerMonth": {
-                "April": 45,
-                "May": 60,
-                "June": 55,
-                "July": 70,
-                "August": 65,
-                "September": 80
+
             }
         },
         "apiMetrics": {

@@ -11,22 +11,23 @@ import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import CustomLineChart from './LineChart';
 import ApiMetricsCard from '../pages/SystemUsageMetrics/ApiMetricsCard';
 
-const valueFormatter = (value) => `${Number(value ?? 0).toFixed(2)}%`; 
+const valueFormatter = (value) => `${Number(value ?? 0).toFixed(2)}%`;
 
 export default function SystemUsageCards({ details }) {
   const { systemMetrics = {}, datasetMetrics = {}, apiMetrics = {} } = details;
-
-  // Extract servicesByType and calculate total
   const { servicesByType = {} } = systemMetrics;
   const totalServices =
     (servicesByType.osw ?? 0) + (servicesByType.flex ?? 0) + (servicesByType.pathways ?? 0);
 
-  // Calculate percentages if totalServices > 0, else return 0
   const servicesData = totalServices > 0 ? [
     { id: 0, value: ((servicesByType.osw ?? 0) / totalServices) * 100, label: 'OSW' },
     { id: 1, value: ((servicesByType.flex ?? 0) / totalServices) * 100, label: 'Flex' },
     { id: 2, value: ((servicesByType.pathways ?? 0) / totalServices) * 100, label: 'Pathways' }
   ] : [];
+
+  // Convert totalSizeMB to GB 
+  const totalSizeUploadedGB = (datasetMetrics.totalUploads?.totalSizeMB ?? 0) / 1024;
+  const totalSizeDownloadedGB = (datasetMetrics.totalDownloads?.totalSizeMB ?? 0) / 1024; 
 
   return (
     <Box sx={{ width: '96%', height: 'auto', padding: '16px' }}>
@@ -54,19 +55,20 @@ export default function SystemUsageCards({ details }) {
             <Grid item xs={4}>
               <DashboardCard
                 title={'Services'}
-                value={systemMetrics.totalServices ?? "N/A"}
+                value={systemMetrics.totalServices ?? "0"}
                 icon={<MiscellaneousServicesIcon />}
                 gradient={'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)'}
                 color={'#fff'}
               />
             </Grid>
+            {/* Dataset Metrics Section */}
             <Grid item xs={6} sx={{ marginTop: '20px' }}>
               <CustomTwoValuesCard
                 title={'Dataset Uploads'}
                 subtitle1={'Uploads'}
-                value1={datasetMetrics.totalUploads?.count ?? 'N/A'}
+                value1={datasetMetrics.totalUploads?.count ?? '0'}
                 subtitle2={'Size Uploaded'}
-                value2={datasetMetrics.totalUploads?.totalSizeGB ?? 'N/A'}
+                value2={totalSizeUploadedGB.toFixed(2) ?? '0'}  
                 icon={<CloudUploadIcon fontSize="large" sx={{ color: '#8ec5fc' }} />}
               />
             </Grid>
@@ -74,9 +76,9 @@ export default function SystemUsageCards({ details }) {
               <CustomTwoValuesCard
                 title={'Dataset Downloads'}
                 subtitle1={'Downloads'}
-                value1={datasetMetrics.totalDownloads?.count ?? 'N/A'}
+                value1={datasetMetrics.totalDownloads?.count ?? '0'}
                 subtitle2={'Size Downloaded'}
-                value2={datasetMetrics.totalDownloads?.totalSizeGB ?? 'N/A'}
+                value2={totalSizeDownloadedGB.toFixed(2) ?? '0'} 
                 icon={<CloudDownloadIcon fontSize="large" sx={{ color: '#8ec5fc' }} />}
               />
             </Grid>

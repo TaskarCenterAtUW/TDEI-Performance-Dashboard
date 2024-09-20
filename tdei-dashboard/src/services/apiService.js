@@ -1,7 +1,8 @@
 import api from "./axiosService";
+import { BASE_URL } from "../utils/contants";
 
-const tdeiCoreUrl = process.env.REACT_APP_URL;
-const tdeiAppUrl = "https://mocki.io/v1/26ccba49-c7d6-49e8-9132-dc4d03f607a7";
+const tdeiCoreUrl = BASE_URL;
+
 
 // Function to get system metrics
 export async function getSystemMetrics() {
@@ -20,17 +21,6 @@ export async function getDataMetrics() {
     return response.data;
   } catch (error) {
     console.error('Error fetching TDEI Core Metrics:', error);
-    throw error;
-  }
-}
-
-// Function to get TDEI app metrics
-export async function getTDEIAppMetrics() {
-  try {
-    const response = await api.get(tdeiAppUrl);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching TDEI App Metrics:', error);
     throw error;
   }
 }
