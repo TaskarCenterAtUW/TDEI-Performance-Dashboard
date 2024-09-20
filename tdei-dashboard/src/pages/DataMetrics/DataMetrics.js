@@ -73,7 +73,7 @@ const DataMetrics = () => {
       </Box>
       <Box sx={{ paddingTop: '30px' }}>
       <Typography variant="h5" component="h2" sx={{marginTop:'16px', marginBottom:'16px'}}>
-      TDEI Demonstration regions
+      TDEI Demonstration Regions
       </Typography>
         <RegionCards specificRegionMetrics={specificRegionMetrics} />
       </Box>
