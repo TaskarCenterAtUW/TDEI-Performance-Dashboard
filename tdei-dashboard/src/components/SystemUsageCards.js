@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box, Card, Stack, Typography } from '@mui/material';
+import { Grid, Box, Card, Typography } from '@mui/material';
 import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
 import DashboardCard from './DashboardCard';
 import GroupIcon from '@mui/icons-material/Group';
@@ -11,16 +11,22 @@ import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import CustomLineChart from './LineChart';
 import ApiMetricsCard from '../pages/SystemUsageMetrics/ApiMetricsCard';
 
-const valueFormatter = (value) => `${value}%`;
+const valueFormatter = (value) => `${Number(value ?? 0).toFixed(2)}%`; 
 
 export default function SystemUsageCards({ details }) {
   const { systemMetrics = {}, datasetMetrics = {}, apiMetrics = {} } = details;
 
-  const servicesData = [
-    { id: 0, value: systemMetrics.servicesByType.osw, label: 'OSW' },
-    { id: 1, value: systemMetrics.servicesByType.flex, label: 'Flex' },
-    { id: 2, value: systemMetrics.servicesByType.pathways, label: 'Pathways' }
-  ];
+  // Extract servicesByType and calculate total
+  const { servicesByType = {} } = systemMetrics;
+  const totalServices =
+    (servicesByType.osw ?? 0) + (servicesByType.flex ?? 0) + (servicesByType.pathways ?? 0);
+
+  // Calculate percentages if totalServices > 0, else return 0
+  const servicesData = totalServices > 0 ? [
+    { id: 0, value: ((servicesByType.osw ?? 0) / totalServices) * 100, label: 'OSW' },
+    { id: 1, value: ((servicesByType.flex ?? 0) / totalServices) * 100, label: 'Flex' },
+    { id: 2, value: ((servicesByType.pathways ?? 0) / totalServices) * 100, label: 'Pathways' }
+  ] : [];
 
   return (
     <Box sx={{ width: '96%', height: 'auto', padding: '16px' }}>
@@ -30,7 +36,7 @@ export default function SystemUsageCards({ details }) {
             <Grid item xs={4}>
               <DashboardCard
                 title={'Users'}
-                value={systemMetrics.totalUsers}
+                value={systemMetrics.totalUsers ?? "N/A"}
                 icon={<GroupIcon />}
                 gradient={'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)'}
                 color={'#fff'}
@@ -39,7 +45,7 @@ export default function SystemUsageCards({ details }) {
             <Grid item xs={4}>
               <DashboardCard
                 title={'Project Groups'}
-                value={systemMetrics.totalProjectGroups}
+                value={systemMetrics.totalProjectGroups ?? "N/A"}
                 icon={<Diversity2Icon />}
                 gradient={'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)'}
                 color={'#fff'}
@@ -48,7 +54,7 @@ export default function SystemUsageCards({ details }) {
             <Grid item xs={4}>
               <DashboardCard
                 title={'Services'}
-                value={systemMetrics.totalServices}
+                value={systemMetrics.totalServices ?? "N/A"}
                 icon={<MiscellaneousServicesIcon />}
                 gradient={'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)'}
                 color={'#fff'}
@@ -58,9 +64,9 @@ export default function SystemUsageCards({ details }) {
               <CustomTwoValuesCard
                 title={'Dataset Uploads'}
                 subtitle1={'Uploads'}
-                value1={datasetMetrics.totalUploads.count}
+                value1={datasetMetrics.totalUploads?.count ?? 'N/A'}
                 subtitle2={'Size Uploaded'}
-                value2={datasetMetrics.totalUploads.totalSizeGB}
+                value2={datasetMetrics.totalUploads?.totalSizeGB ?? 'N/A'}
                 icon={<CloudUploadIcon fontSize="large" sx={{ color: '#8ec5fc' }} />}
               />
             </Grid>
@@ -68,9 +74,9 @@ export default function SystemUsageCards({ details }) {
               <CustomTwoValuesCard
                 title={'Dataset Downloads'}
                 subtitle1={'Downloads'}
-                value1={datasetMetrics.totalDownloads.count}
+                value1={datasetMetrics.totalDownloads?.count ?? 'N/A'}
                 subtitle2={'Size Downloaded'}
-                value2={datasetMetrics.totalDownloads.totalSizeGB}
+                value2={datasetMetrics.totalDownloads?.totalSizeGB ?? 'N/A'}
                 icon={<CloudDownloadIcon fontSize="large" sx={{ color: '#8ec5fc' }} />}
               />
             </Grid>
@@ -79,7 +85,6 @@ export default function SystemUsageCards({ details }) {
         <Grid item xs={4}>
           <Card sx={{
             height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)',
-            background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
             borderRadius: '12px',
             transition: 'transform 0.3s',
             '&:hover': {
@@ -96,36 +101,43 @@ export default function SystemUsageCards({ details }) {
               }}>
                 Services By Type
               </Typography>
-              <PieChart
-               series={[
-                {
-                  arcLabel: (item) => `${item.value}%`, 
-                  arcLabelMinAngle: 35, 
-                  arcLabelRadius: '60%',
-                  data: servicesData, 
-                  valueFormatter, 
-                },
-              ]}
-              tooltip={{ show: false }}
-                sx={{
-                  [`& .${pieArcLabelClasses.root}`]: {
-                    fontWeight: 'bold', 
-                    fill: '#fff', 
-                  },
-                }}
-                width={400}
-                height={200}
-              />
+              {servicesData.length > 0 ? (
+                <PieChart
+                  series={[
+                    {
+                      arcLabel: (item) => `${Number(item.value ?? 0).toFixed(2)}%`,
+                      arcLabelMinAngle: 10, 
+                      arcLabelRadius: '80%', 
+                      data: servicesData,
+                      valueFormatter,
+                    },
+                  ]}
+                  tooltip={{ show: false }}
+                  sx={{
+                    [`& .${pieArcLabelClasses.root}`]: {
+                      fontWeight: 'bold',
+                      fill: '#fff',
+                      fontSize:'12px'
+                    },
+                  }}
+                  width={400}
+                  height={200}
+                />
+              ) : (
+                <Typography sx={{ fontWeight: 'bold', color: '#333' }}>
+                  No Data Available
+                </Typography>
+              )}
             </Box>
           </Card>
         </Grid>
         <Grid item xs={6} sx={{ marginTop: '10px' }}>
           <Card sx={{ boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)', height: '375px' }}>
-            <CustomLineChart data={datasetMetrics.downloadsPerMonth} />
+            <CustomLineChart data={datasetMetrics.downloadsPerMonth ?? {}} />
           </Card>
         </Grid>
         <Grid item xs={6} sx={{ marginTop: '10px' }}>
-          <ApiMetricsCard apiMetrics={apiMetrics} />
+          <ApiMetricsCard apiMetrics={apiMetrics ?? {}} />
         </Grid>
       </Grid>
     </Box>
