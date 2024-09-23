@@ -1,13 +1,13 @@
-import { getSystemMetrics } from '../services/apiService';
+import { getDataMetrics } from '../services/apiService';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 
-function useGetSystemMetrics(queryKey = ['systemMetrics'], enabled = true) {
+function useGetDataMetrics(queryKey = ['dataMetrics'], enabled = true) {
     const [refreshKey, setRefreshKey] = useState(0); 
 
     const { data, error, isLoading, refetch } = useQuery({
         queryKey: [...queryKey, refreshKey],  
-        queryFn: () => getSystemMetrics(),  
+        queryFn: () => getDataMetrics(),  
         enabled,  
         keepPreviousData: true,  
     });
@@ -18,4 +18,4 @@ function useGetSystemMetrics(queryKey = ['systemMetrics'], enabled = true) {
     return { data, error, isLoading, refreshData, refetch };
 }
 
-export default useGetSystemMetrics;
+export default useGetDataMetrics;
