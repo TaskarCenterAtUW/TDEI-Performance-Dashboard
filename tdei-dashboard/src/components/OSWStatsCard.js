@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid, Card, Typography, Avatar } from '@mui/material';
+import { Box, Grid, Card, Typography } from '@mui/material';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import CategoryIcon from '@mui/icons-material/Category';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -8,6 +8,18 @@ import StorageIcon from '@mui/icons-material/Storage';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import CommitIcon from '@mui/icons-material/Commit'; 
 import LandscapeIcon from '@mui/icons-material/Landscape';
+
+// Function to format large numbers with commas
+const formatNumber = (value) => {
+    if (value === null || value === undefined) return '0';
+    return new Intl.NumberFormat('en-US').format(value);
+};
+
+// Function to format distance values (kilometers)
+const formatDistance = (value) => {
+    if (value === null || value === undefined) return '0';
+    return `${formatNumber(value)} km`;
+};
 
 const iconsMap = {
     num_crossings: <ClearIcon fontSize="large" />,
@@ -35,7 +47,6 @@ const OSWStatsCard = ({ osw }) => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 background: 'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)',
-                // background: 'linear-gradient(135deg, #873EF2 0%, #E43FF2 100%)',
                 borderRadius: '16px',
                 padding: '20px',
                 boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
@@ -54,7 +65,7 @@ const OSWStatsCard = ({ osw }) => {
                                 Datasets
                             </Typography>
                             <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#fff' }}>
-                                {totalDatasets}
+                                {formatNumber(totalDatasets)}
                             </Typography>
                         </Box>
                     </Box>
@@ -66,7 +77,7 @@ const OSWStatsCard = ({ osw }) => {
                             Total Size 
                         </Typography>
                         <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#fff' }}>
-                            {totalSizeGB} GB
+                            {formatNumber(totalSizeGB)} GB
                         </Typography>
                     </Box>
                 </Box>
@@ -93,7 +104,9 @@ const OSWStatsCard = ({ osw }) => {
                                 {iconsMap[statName] || <CategoryIcon fontSize="large" />}
                             </Box>
                             <Typography variant="h4" sx={{ color: 'black', fontWeight: 'bold', marginTop: '50px' }}>
-                                {statValue}
+                                {statName === 'length_of_sidewalks_km' || statName === 'concave_hull_area_km2'
+                                    ? formatDistance(statValue)
+                                    : formatNumber(statValue)}
                             </Typography>
                             <Typography variant="body1" sx={{ marginTop: '8px', fontWeight: 'bold', color: '#333' }}>
                                 {customLabels[statName] || statName.replace(/_/g, ' ')}
