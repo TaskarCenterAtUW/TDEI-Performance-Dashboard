@@ -27,7 +27,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cp:config": "cp ../staticwebapp.config.json build"
+    "cp:config": "cp ../staticwebapp.config.json build",
+    "encryp-value": "node extractCredentials.js"
   },
   "eslintConfig": {
     "extends": [
