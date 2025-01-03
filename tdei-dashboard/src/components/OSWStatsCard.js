@@ -8,17 +8,12 @@ import StorageIcon from '@mui/icons-material/Storage';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import CommitIcon from '@mui/icons-material/Commit'; 
 import LandscapeIcon from '@mui/icons-material/Landscape';
+import millify from 'millify';
 
 // Function to format large numbers with commas
 const formatNumber = (value) => {
     if (value === null || value === undefined) return '0';
-    return new Intl.NumberFormat('en-US').format(value);
-};
-
-// Function to format distance values (kilometers)
-const formatDistance = (value) => {
-    if (value === null || value === undefined) return '0';
-    return `${formatNumber(value)} km`;
+    return millify(value);
 };
 
 const iconsMap = {
@@ -34,7 +29,7 @@ const customLabels = {
     length_of_sidewalks_km: "Sidewalks (km)",
     num_edges: "Edges",
     num_nodes: "Nodes",
-    concave_hull_area_km2: "Area (km²)",
+    area_km2: "Area (km²)",
 };
 
 const OSWStatsCard = ({ osw }) => {
@@ -104,9 +99,7 @@ const OSWStatsCard = ({ osw }) => {
                                 {iconsMap[statName] || <CategoryIcon fontSize="large" />}
                             </Box>
                             <Typography variant="h4" sx={{ color: 'black', fontWeight: 'bold', marginTop: '50px' }}>
-                                {statName === 'length_of_sidewalks_km' || statName === 'concave_hull_area_km2'
-                                    ? formatDistance(statValue)
-                                    : formatNumber(statValue)}
+                                {formatNumber(statValue)}
                             </Typography>
                             <Typography variant="body1" sx={{ marginTop: '8px', fontWeight: 'bold', color: '#333' }}>
                                 {customLabels[statName] || statName.replace(/_/g, ' ')}
