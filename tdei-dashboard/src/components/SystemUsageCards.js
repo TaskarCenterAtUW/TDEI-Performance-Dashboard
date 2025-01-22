@@ -15,7 +15,7 @@ import { monthAbbreviations } from '../utils/utils';
 const valueFormatter = (value) => `${Number(value ?? 0).toFixed(2)}%`;
 
 export default function SystemUsageCards({ details }) {
-  const { systemMetrics = {}, datasetMetrics = {}, apiMetrics = {} } = details;
+  const { systemMetrics = {}, datasetMetrics = {}, apiCalls = {} } = details;
   const { servicesByType = {} } = systemMetrics;
   const totalServices =
     (servicesByType.osw ?? 0) + (servicesByType.flex ?? 0) + (servicesByType.pathways ?? 0);
@@ -181,7 +181,7 @@ export default function SystemUsageCards({ details }) {
         <Grid item xs={6} sx={{ marginTop: '10px' }}>
           <Tooltip title="API metrics, including total API calls and calls per endpoint" disableInteractive>
             <Box>
-              <ApiMetricsCard apiMetrics={apiMetrics ?? {}} />
+              <ApiMetricsCard apiMetrics={apiCalls ?? {}} />
             </Box>
           </Tooltip>
         </Grid>
