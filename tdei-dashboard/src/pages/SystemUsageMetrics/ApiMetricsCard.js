@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography, List, ListItem, ListItemText, Divider } from '@mui/material';
 
 const ApiMetricsCard = ({ apiMetrics }) => {
-  const { totalApiCalls, apiCallsByEndpoint } = apiMetrics;
+  const { total = 0, byApi = [] } = apiMetrics;
 
   return (
     <Box
@@ -29,7 +29,7 @@ const ApiMetricsCard = ({ apiMetrics }) => {
         }}
       >
         <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
-          Total API Calls: {totalApiCalls}
+          Total API Calls: {total}
         </Typography>
       </Box>
       <Box
@@ -41,31 +41,42 @@ const ApiMetricsCard = ({ apiMetrics }) => {
         }}
       >
         <List>
-          {Object.entries(apiCallsByEndpoint).map(([endpoint, count]) => (
-            <React.Fragment key={endpoint}>
-              <ListItem
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  padding: '12px 16px',
-                  backgroundColor: '#ffffff',
-                  borderRadius: '8px',
-                  marginBottom: '12px',
-                  boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.05)',
-                  transition: 'background-color 0.3s ease',
-                  '&:hover': {
-                    backgroundColor: '#f0f0f0',
-                  },
-                }}
-              >
-                <ListItemText primary={endpoint} sx={{ fontWeight: 'bold' }} />
-                <Typography variant="body1" sx={{ fontWeight: 'bold', color: '#4C2880' }}>
-                  {count}
-                </Typography>
-              </ListItem>
-              <Divider />
-            </React.Fragment>
-          ))}
+        {byApi.length > 0 ? (
+          <List>
+            {byApi.map(({ endpoint, count }, index) => (
+              <React.Fragment key={index}>
+                <ListItem
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    padding: '12px 16px',
+                    backgroundColor: '#ffffff',
+                    borderRadius: '8px',
+                    marginBottom: '12px',
+                    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.05)',
+                    transition: 'background-color 0.3s ease',
+                    '&:hover': {
+                      backgroundColor: '#f0f0f0',
+                    },
+                  }}
+                >
+                  <ListItemText primary={endpoint || "Unknown Endpoint"} sx={{ fontWeight: 'bold' }} />
+                  <Typography variant="body1" sx={{ fontWeight: 'bold', color: '#4C2880' }}>
+                    {count ?? 0}
+                  </Typography>
+                </ListItem>
+                <Divider />
+              </React.Fragment>
+            ))}
+          </List>
+        ) : (
+          <Typography
+            variant="body2"
+            sx={{ textAlign: 'center', color: '#888888', marginTop: '20px' }}
+          >
+            No API calls to display
+          </Typography>
+        )}
         </List>
       </Box>
     </Box>
