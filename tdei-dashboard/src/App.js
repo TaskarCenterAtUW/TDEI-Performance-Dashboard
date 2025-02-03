@@ -5,6 +5,8 @@ import SystemUsageMetrics from "./pages/SystemUsageMetrics/SystemUsageMetrics";
 import DataMetrics from "./pages/DataMetrics/DataMetrics";
 import TDEIMetrics from "./pages/TDEIMetrics/TDEIMetrics";
 import theme from "./theme";
+import tdeiLogo from "./assets/img/tdei_logo.svg";
+import './App.css';
 
 function App() {
   const [activeTab, setActiveTab] = useState(0);
@@ -25,6 +27,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <AppBar position="fixed">
         <Toolbar>
+        <img src={tdeiLogo} alt="TDEI Logo" className="logoImage" />
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             TDEI Performance Dashboard
           </Typography>

@@ -7,3 +7,18 @@ export const gradients = [
     'linear-gradient(135deg, #f7971e 0%, #ffd200 100%)', // Orange to Yellow gradient
     'linear-gradient(135deg, #f12711 0%, #f5af19 100%)', // Red to Orange
   ];
+
+  export const monthAbbreviations = {
+    January: "Jan",
+    February: "Feb",
+    March: "Mar",
+    April: "Apr",
+    May: "May",
+    June: "Jun",
+    July: "Jul",
+    August: "Aug",
+    September: "Sep",
+    October: "Oct",
+    November: "Nov",
+    December: "Dec",
+  };
