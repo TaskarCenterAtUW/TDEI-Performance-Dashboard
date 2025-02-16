@@ -8,13 +8,14 @@ import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices
 import CustomTwoValuesCard from './CustomTwoValuesCard';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
-import CustomLineChart from './LineChart';
+import CustomBarChart from './CustomBarChart';
 import ApiMetricsCard from '../pages/SystemUsageMetrics/ApiMetricsCard';
+import { monthAbbreviations } from '../utils/utils';
 
 const valueFormatter = (value) => `${Number(value ?? 0).toFixed(2)}%`;
 
 export default function SystemUsageCards({ details }) {
-  const { systemMetrics = {}, datasetMetrics = {}, apiMetrics = {} } = details;
+  const { systemMetrics = {}, datasetMetrics = {}, apiCalls = {} } = details;
   const { servicesByType = {} } = systemMetrics;
   const totalServices =
     (servicesByType.osw ?? 0) + (servicesByType.flex ?? 0) + (servicesByType.pathways ?? 0);
@@ -28,7 +29,7 @@ export default function SystemUsageCards({ details }) {
   // Convert totalSizeMB to GB 
   const totalSizeUploadedGB = (datasetMetrics.totalUploads?.totalSizeMB ?? 0) / 1024;
   const totalSizeDownloadedGB = (datasetMetrics.totalDownloads?.totalSizeMB ?? 0) / 1024; 
-
+  
   return (
     <Box sx={{ width: '96%', height: 'auto', padding: '16px' }}>
       <Grid container spacing={2}>
@@ -161,7 +162,7 @@ export default function SystemUsageCards({ details }) {
           <Tooltip title="Dataset download statistics over time" disableInteractive>
             <Box>
               <Card sx={{ boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)', height: '375px' }}>
-                <CustomLineChart data={datasetMetrics.downloadsPerMonth ?? {}} />
+              <CustomBarChart data={datasetMetrics.downloadsPerMonth ?? {}} />
               </Card>
             </Box>
           </Tooltip>
@@ -169,7 +170,7 @@ export default function SystemUsageCards({ details }) {
         <Grid item xs={6} sx={{ marginTop: '10px' }}>
           <Tooltip title="API metrics, including total API calls and calls per endpoint" disableInteractive>
             <Box>
-              <ApiMetricsCard apiMetrics={apiMetrics ?? {}} />
+              <ApiMetricsCard apiMetrics={apiCalls ?? {}} />
             </Box>
           </Tooltip>
         </Grid>

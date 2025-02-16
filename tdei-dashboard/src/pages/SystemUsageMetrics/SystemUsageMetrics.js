@@ -14,7 +14,8 @@ const SystemUsageMetrics = () => {
       setUpdatedMetrics((prevMetrics) => ({
         ...prevMetrics,
         systemMetrics: data.systemMetrics, 
-        datasetMetrics: data.datasetMetrics
+        datasetMetrics: data.datasetMetrics,
+        apiCalls: data.apiCalls
       }));
     }
   }, [data]);

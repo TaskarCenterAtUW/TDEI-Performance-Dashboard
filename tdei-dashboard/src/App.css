@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.logoImage {
+  width: 50px;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  margin: 10px;
+}
