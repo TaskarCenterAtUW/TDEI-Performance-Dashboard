@@ -8,7 +8,7 @@ import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices
 import CustomTwoValuesCard from './CustomTwoValuesCard';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
-import CustomLineChart from './LineChart';
+import CustomBarChart from './CustomBarChart';
 import ApiMetricsCard from '../pages/SystemUsageMetrics/ApiMetricsCard';
 import { monthAbbreviations } from '../utils/utils';
 
@@ -29,18 +29,7 @@ export default function SystemUsageCards({ details }) {
   // Convert totalSizeMB to GB 
   const totalSizeUploadedGB = (datasetMetrics.totalUploads?.totalSizeMB ?? 0) / 1024;
   const totalSizeDownloadedGB = (datasetMetrics.totalDownloads?.totalSizeMB ?? 0) / 1024; 
-
-  const flattenDownloadsPerMonth = (downloadsPerMonth) => {
-    const flattenedData = {};
-    for (const [year, months] of Object.entries(downloadsPerMonth)) {
-      for (const [month, count] of Object.entries(months)) {
-        const yearAbbrev = year.slice(-2);
-        const monthAbbrev = monthAbbreviations[month.trim()] || month.trim();
-        flattenedData[`${monthAbbrev} ${yearAbbrev}`] = count;
-      }
-    }
-    return flattenedData;
-  };
+  
   return (
     <Box sx={{ width: '96%', height: 'auto', padding: '16px' }}>
       <Grid container spacing={2}>
@@ -173,7 +162,7 @@ export default function SystemUsageCards({ details }) {
           <Tooltip title="Dataset download statistics over time" disableInteractive>
             <Box>
               <Card sx={{ boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)', height: '375px' }}>
-              <CustomLineChart data={flattenDownloadsPerMonth(datasetMetrics.downloadsPerMonth ?? {})} />
+              <CustomBarChart data={datasetMetrics.downloadsPerMonth ?? {}} />
               </Card>
             </Box>
           </Tooltip>
