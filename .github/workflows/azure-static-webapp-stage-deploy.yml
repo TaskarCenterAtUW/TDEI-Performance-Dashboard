@@ -32,6 +32,7 @@ jobs:
           echo REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }} >> .env
           echo REACT_APP_ENCRYPTED_KEY=${{ secrets.REACT_APP_ENCRYPTED_KEY }} >> .env
           echo REACT_APP_PKI=${{ secrets.REACT_APP_PKI }} >> .env
+          echo REACT_APP_PROJECT_GROUP=${{ secrets.REACT_APP_PROJECT_GROUP }} >> .env
           echo CI=false >> .env
           npm i --legacy-peer-deps
           CI=false npm run build --if-present

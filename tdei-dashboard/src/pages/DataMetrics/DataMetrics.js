@@ -37,8 +37,6 @@ const DataMetrics = () => {
     totalSizeMB: 0,
   };
 
-  const specificRegionMetrics = dataMetrics?.specificRegionMetrics || defaultDataMetrics.specificRegionMetrics || {};
-
   // Convert MB to GB
   const convertMBtoGB = (mb) => (mb === 0 ? 0 : (mb / 1024).toFixed(3));
 
@@ -87,7 +85,7 @@ const DataMetrics = () => {
         <Typography variant="h5" component="h2" sx={{ marginTop: '16px', marginBottom: '16px' }}>
           TDEI Demonstration Regions
         </Typography>
-        <RegionCards specificRegionMetrics={specificRegionMetrics} />
+        <RegionCards />
       </Box>
     </Box>
   );
