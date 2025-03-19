@@ -36,7 +36,7 @@ git clone <repository-url>
 
 **Step 2: Navigate to Project Directory**
 ```shell
-cd tdei-metrics-ui
+cd tdei-dashboard
 ```
 
 **Step 3: Install Dependencies**
