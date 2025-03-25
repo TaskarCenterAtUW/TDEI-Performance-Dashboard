@@ -30,7 +30,7 @@ const TDEIMetrics = () => {
             </Tooltip>
           </Grid>
           <Grid item xs={12} sm={3}>
-            <Tooltip title="Percentage of route coverage based on collected data." arrow>
+            <Tooltip title="Percent of Origin Destination pairs successfully routed for unconstrained pedestrians.  Each pair is an apartment building in covered area and nearest critical service within half mile." arrow>
               <Card
                 sx={{
                   height: '370px',
@@ -49,7 +49,7 @@ const TDEIMetrics = () => {
                 <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <CustomGauge
                     color={'#873EF2'}
-                    percentage= {null}
+                    percentage= {91}
                     title="Route Coverage %"
                   />
                 </Box>
@@ -57,7 +57,7 @@ const TDEIMetrics = () => {
             </Tooltip>
           </Grid>
           <Grid item xs={12} sm={3}>
-            <Tooltip title="Percentage of wheelchair accessibility validations." arrow >
+            <Tooltip title="Percent of Origin Destination pairs successfully routed for wheelchair users.  Each pair is an apartment building in covered area and nearest critical service within half mile." arrow >
               <Card
                 sx={{
                   height: '370px',
@@ -78,7 +78,7 @@ const TDEIMetrics = () => {
                 <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <CustomGauge
                     color={'#004fff'}
-                    percentage={null}
+                    percentage={89}
                     title="Wheelchair Validation %"
                   />
                 </Box>
