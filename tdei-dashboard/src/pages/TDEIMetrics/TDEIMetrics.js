@@ -49,7 +49,7 @@ const TDEIMetrics = () => {
                 <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <CustomGauge
                     color={'#873EF2'}
-                    percentage={routeMetrics?.routeCoverage}
+                    percentage= {null}
                     title="Route Coverage %"
                   />
                 </Box>
@@ -67,7 +67,6 @@ const TDEIMetrics = () => {
                   background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)',
                   borderRadius: '12px',
                   transition: 'transform 0.3s',
-                  display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
                   '&:hover': {
@@ -79,7 +78,7 @@ const TDEIMetrics = () => {
                 <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <CustomGauge
                     color={'#004fff'}
-                    percentage={routeMetrics?.wheelchairValidation}
+                    percentage={null}
                     title="Wheelchair Validation %"
                   />
                 </Box>
