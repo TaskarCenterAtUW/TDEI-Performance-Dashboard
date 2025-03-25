@@ -30,7 +30,7 @@ const TDEIMetrics = () => {
             </Tooltip>
           </Grid>
           <Grid item xs={12} sm={3}>
-            <Tooltip title="Percentage of route coverage based on collected data." arrow>
+            <Tooltip title="Percentage of origin destination pairs among POI from the Overpass API that are routable in AccessMap for unconstrained pedestrians." arrow>
               <Card
                 sx={{
                   height: '370px',
@@ -57,7 +57,7 @@ const TDEIMetrics = () => {
             </Tooltip>
           </Grid>
           <Grid item xs={12} sm={3}>
-            <Tooltip title="Percentage of wheelchair accessibility validations." arrow >
+            <Tooltip title="Percentage of origin destination pairs among POI from the Overpass API that are routable in AccessMap for wheelchair users." arrow >
               <Card
                 sx={{
                   height: '370px',
