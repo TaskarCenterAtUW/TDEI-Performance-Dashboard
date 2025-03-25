@@ -14,16 +14,15 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 export default function SatisfactionChart({ satisfactionRates }) {
   const categories = ['AccessMap', 'Audiom', 'Walkshed'];
-  const actualValues = [
-    satisfactionRates?.accessMap || 0, 
-    satisfactionRates?.audiom || 0, 
-    satisfactionRates?.walkshed || 0
+
+  const originalValues = [
+    satisfactionRates?.accessMap ?? null,
+    satisfactionRates?.audiom ?? null,
+    satisfactionRates?.walkshed ?? null,
   ];
-  const remainingValues = [
-    5 - (satisfactionRates?.accessMap || 0), 
-    5 - (satisfactionRates?.audiom || 0), 
-    5 - (satisfactionRates?.walkshed || 0)
-  ];
+
+  const actualValues = originalValues.map(val => val ?? 0);
+  const remainingValues = originalValues.map(val => (val == null ? 5 : 5 - val));
 
   const data = {
     labels: categories,
@@ -35,7 +34,7 @@ export default function SatisfactionChart({ satisfactionRates }) {
         barThickness: 40,
       },
       {
-        label: '',
+        label: 'Remaining',
         data: remainingValues,
         backgroundColor: 'lightgrey',
         barThickness: 40,
@@ -45,31 +44,47 @@ export default function SatisfactionChart({ satisfactionRates }) {
 
   const options = {
     indexAxis: 'y',
+    responsive: true,
     scales: {
       x: {
         stacked: true,
         min: 0,
         max: 5,
-        grid: {
-          display: false,
-        },
+        grid: { display: false },
       },
       y: {
         stacked: true,
-        ticks: {
-          font: {
-            size: 14,
-          },
-        },
-        grid: {
-          display: false,
-        },
+        ticks: { font: { size: 14 } },
+        grid: { display: false },
       },
     },
-    responsive: true,
     plugins: {
-      legend: {
-        display: false,
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            const index = context.dataIndex;
+            const datasetIndex = context.datasetIndex;
+            const category = categories[index];
+            const originalValue = originalValues[index];
+
+            if (datasetIndex === 0) {
+              if (originalValue == null) {
+                return `${category}: Satisfaction data is pending`;
+              }
+              return `${category}: ${originalValue.toFixed(2)}`;
+            }
+
+            if (datasetIndex === 1) {
+              if (remainingValues[index] === 5) {
+                return `${category}: Satisfaction data is pending`;
+              }
+              return '';
+            }
+
+            return '';
+          },
+        },
       },
     },
   };
