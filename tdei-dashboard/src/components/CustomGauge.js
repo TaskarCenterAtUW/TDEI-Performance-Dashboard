@@ -4,30 +4,32 @@ import { Box, Typography } from '@mui/material';
 
 const CustomGauge = ({ color, percentage, title }) => {
   const [value, setValue] = useState(0); 
+  const isPending = percentage == null;
 
   useEffect(() => {
-    const animationDuration = 1000; 
-    const stepTime = 20; 
-    const steps = animationDuration / stepTime; 
-    const increment = (percentage - value) / steps; 
+    if (isPending) return;
+    const animationDuration = 1000;
+    const stepTime = 20;
+    const steps = animationDuration / stepTime;
+    const increment = (percentage - value) / steps;
 
     const interval = setInterval(() => {
       setValue((prevValue) => {
         if (prevValue >= percentage) {
-          clearInterval(interval); 
-          return percentage; 
+          clearInterval(interval);
+          return percentage;
         }
-        return Math.min(prevValue + increment, percentage); 
+        return Math.min(prevValue + increment, percentage);
       });
     }, stepTime);
 
-    return () => clearInterval(interval); 
-  }, [percentage]); 
+    return () => clearInterval(interval);
+  }, [percentage]);
 
   const settings = {
     width: 200,
     height: 300,
-    value: value, 
+    value: isPending ? 0 : value,
   };
 
   return (
@@ -43,10 +45,10 @@ const CustomGauge = ({ color, percentage, title }) => {
         {...settings}
         sx={{
           [`& .${gaugeClasses.valueText}`]: {
-            fontSize: 30,
+            fontSize: 24,
             fontWeight: 'bold',
-            fill: '#333',
-            textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)',
+            fill: isPending ? '#999' : '#333',
+            textShadow: isPending ? 'none' : '1px 1px 2px rgba(0, 0, 0, 0.2)',
           },
           [`& .${gaugeClasses.valueArc}`]: {
             fill: color,
@@ -58,6 +60,7 @@ const CustomGauge = ({ color, percentage, title }) => {
             strokeWidth: 3,
           },
         }}
+        text={isPending ? 'Pending...' : undefined}
       />
     </Box>
   );

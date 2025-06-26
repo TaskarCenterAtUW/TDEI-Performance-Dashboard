@@ -33,7 +33,7 @@ const RegionCards = () => {
     }
 
     return (
-        <Box sx={{ width: '100%', height: 'auto', padding: '10px' }}>
+        <Box sx={{ width: '100%' }}>
             <Grid container spacing={2}>
                 {data.services.map((service, index) => {
                     const sizeMB = service.total_unzipped_size_mb;

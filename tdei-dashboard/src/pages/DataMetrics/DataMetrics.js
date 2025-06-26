@@ -41,11 +41,11 @@ const DataMetrics = () => {
   const convertMBtoGB = (mb) => (mb === 0 ? 0 : (mb / 1024).toFixed(3));
 
   return (
-    <Box sx={{ width: '96%', height: 'auto', padding: '16px' }}>
-      <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: '8px', color: '#333' }}>
+    <Box className="data__container">
+      <div className='data__title'>
         Data Metrics
-      </Typography>
-      <Box sx={{ paddingTop: '30px' }}>
+      </div>
+      <Box>
         <Tooltip title="Overall statistics for OSW datasets, including size and various aggregated metrics" arrow placement='top'>
           <Box>
             <OSWStatsCard osw={{
@@ -55,9 +55,9 @@ const DataMetrics = () => {
           </Box>
         </Tooltip>
       </Box>
-      <Box sx={{ paddingTop: '30px' }}>
+      <Box sx={{ marginTop: '40px' }}>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Tooltip title="Statistics for Flex datasets, including total number and size" arrow>
               <Box>
                 <CustomStatsCard
@@ -68,7 +68,7 @@ const DataMetrics = () => {
               </Box>
             </Tooltip>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Tooltip title="Statistics for Pathways datasets, including total number and size" arrow>
               <Box>
                 <CustomStatsCard
@@ -81,10 +81,12 @@ const DataMetrics = () => {
           </Grid>
         </Grid>
       </Box>
-      <Box sx={{ paddingTop: '30px' }}>
-        <Typography variant="h5" component="h2" sx={{ marginTop: '16px', marginBottom: '16px' }}>
+      <Box sx={{ marginTop: '40px' }}>
+        <div className='data__title'>
+        {/* <Typography variant="h5" component="h2" sx={{ marginTop: '16px', marginBottom: '16px' }}> */}
           TDEI Demonstration Regions
-        </Typography>
+        {/* </Typography> */}
+        </div>
         <RegionCards />
       </Box>
     </Box>

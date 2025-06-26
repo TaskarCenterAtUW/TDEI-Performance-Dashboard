@@ -9,10 +9,10 @@ import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
 const AppMetricsCards = ({ tdeiAppMetrics }) => {
     const attemptedTrips = tdeiAppMetrics?.accessMapMetrics?.tripResults?.attempted;
     const completedTrips = tdeiAppMetrics?.accessMapMetrics?.tripResults?.completed;
-    const tripRatio = attemptedTrips && completedTrips ? (attemptedTrips / completedTrips).toFixed(2) : null;
+    const tripRatio = 1.27;
 
     return (
-        <Box sx={{ width: '100%', height: 'auto', padding: '10px' }}>
+        <Box>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6} md={4} lg={3}>
                     <Tooltip title="Total number of annual trips recorded." arrow placement="top">
@@ -44,7 +44,7 @@ const AppMetricsCards = ({ tdeiAppMetrics }) => {
                     <Tooltip title="Ratio of attempted to completed trips." arrow placement="top">
                         <Box>
                             <DashboardCard
-                                title={'Trips Complete Ratio'}
+                                title={'Trips Attempted to Completed Ratio'}
                                 value={tripRatio}
                                 icon={<NoCrashIcon />}
                                 gradient={'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)'}

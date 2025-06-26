@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid, Card, Typography } from '@mui/material';
+import { Box, Grid, Card, Typography, Grid2 } from '@mui/material';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
 import CategoryIcon from '@mui/icons-material/Category';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -36,79 +36,86 @@ const OSWStatsCard = ({ osw }) => {
     const { totalDatasets, totalSizeGB, aggregatedStats } = osw;
 
     return (
-        <Box
+        <Grid container
             sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 background: 'linear-gradient(135deg, #4C2880 0%, #8749F2 100%)',
                 borderRadius: '16px',
-                padding: '20px',
+                padding: '25px 30px',
                 boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-                height: '180px',
+                flexWrap: 'wrap'
+                // height: '180px',
             }}
         >
-            <Box sx={{ width: '20%', padding: '16px' }}>
+            <Grid item xs={12} sm={12} md={2} >
                 <Typography variant="h5" sx={{ fontWeight: 'bold', marginBottom: '8px', color: 'white' }}>
                     OSW Stats
                 </Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <StorageIcon sx={{ color: '#fff', fontSize: '24px' }} />
-                        <Box>
-                            <Typography variant="subtitle2" sx={{ color: '#f0f0f0', fontWeight: 'bold' }}>
-                                Datasets
-                            </Typography>
-                            <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#fff' }}>
-                                {formatNumber(totalDatasets)}
-                            </Typography>
-                        </Box>
-                    </Box>
-                </Box>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop:'10px' }}>
-                    <BarChartIcon sx={{ color: '#fff', fontSize: '24px' }} />
-                    <Box>
-                        <Typography variant="subtitle2" sx={{ color: '#f0f0f0', fontWeight: 'bold' }}>
-                            Total Size 
-                        </Typography>
-                        <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#fff' }}>
-                            {formatNumber(totalSizeGB)} GB
-                        </Typography>
-                    </Box>
-                </Box>
-            </Box>
-            <Grid container spacing={2} sx={{ width: '70%' }}>
-                {Object.entries(aggregatedStats).map(([statName, statValue]) => (
-                    <Grid item xs={2.4} key={statName}>
-                        <Card
-                            sx={{
-                                position: 'relative',
-                                minHeight: '130px',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                textAlign: 'center',
-                                borderRadius: '16px',
-                                boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-                                padding: '10px',
-                                overflow: 'visible',
-                            }}
-                        >
-                            <Box sx={{ position: 'absolute', top: '-30px', backgroundColor: '#ffffff', padding: '8px', borderRadius: '50%', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)' }}>
-                                {iconsMap[statName] || <CategoryIcon fontSize="large" />}
+                <Grid container spacing={2}>
+                    <Grid item xs={6} sm={6} md={12}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <StorageIcon sx={{ color: '#fff', fontSize: '24px' }} />
+                            <Box>
+                                <Typography variant="subtitle2" sx={{ color: '#f0f0f0', fontWeight: 'bold' }}>
+                                    Datasets
+                                </Typography>
+                                <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#fff' }}>
+                                    {formatNumber(totalDatasets)}
+                                </Typography>
                             </Box>
-                            <Typography variant="h4" sx={{ color: 'black', fontWeight: 'bold', marginTop: '50px' }}>
-                                {formatNumber(statValue)}
-                            </Typography>
-                            <Typography variant="body1" sx={{ marginTop: '8px', fontWeight: 'bold', color: '#333' }}>
-                                {customLabels[statName] || statName.replace(/_/g, ' ')}
-                            </Typography>
-                        </Card>
+                        </Box>
                     </Grid>
-                ))}
+                    <Grid item xs={6} sm={6} md={12}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <BarChartIcon sx={{ color: '#fff', fontSize: '24px' }} />
+                            <Box>
+                                <Typography variant="subtitle2" sx={{ color: '#f0f0f0', fontWeight: 'bold' }}>
+                                    Total Size 
+                                </Typography>
+                                <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#fff' }}>
+                                    {formatNumber(totalSizeGB)} GB
+                                </Typography>
+                            </Box>
+                        </Box>
+                    </Grid>
+                </Grid>
             </Grid>
-        </Box>
+            <Grid item xs={12} sm={12} md={10} sx={{ marginTop: { xs: '50px', sm: '50px', md: '25px'}}}>
+                <Grid container spacing={2} sx={{ justifyContent: {sm: 'flex-start', md: 'flex-end'} }}>
+                    {Object.entries(aggregatedStats).map(([statName, statValue]) => (
+                        <Grid item xs={6} sm={4} md={2} key={statName} >
+                            <Card
+                                sx={{
+                                    position: 'relative',
+                                    minHeight: {xs: '100px', sm: '100px', md: '130px'},
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    textAlign: 'center',
+                                    borderRadius: '16px',
+                                    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+                                    padding: '10px',
+                                    overflow: 'visible',
+                                }}
+                            >
+                                <Box sx={{ position: 'absolute', top: '-30px', backgroundColor: '#ffffff', padding: '8px', borderRadius: '50%', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.2)' }}>
+                                    {iconsMap[statName] || <CategoryIcon fontSize="large" />}
+                                </Box>
+                                <Typography variant="h4" sx={{ color: '#333', fontWeight: 'bold', marginTop: '0px', fontSize: {xs: '1.4rem', sm: '1.4rem', md: '2rem'} }}>
+                                    {formatNumber(statValue)}
+                                </Typography>
+                                <Typography variant="body1" sx={{ marginTop: '8px', fontWeight: 'bold', color: '#333' }}>
+                                    {customLabels[statName] || statName.replace(/_/g, ' ')}
+                                </Typography>
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Grid>
+        </Grid>
     );
 };
 
