@@ -22,9 +22,9 @@ const SystemUsageMetrics = () => {
 
   return (
     <Box sx={{ minHeight: 'auto' }}>
-      <Typography variant="h4" sx={{ fontWeight: 'bold', marginBottom: '8px', color: '#333', padding: '16px' }}>
+      <div className='data__title'>
         System Usage Metrics
-      </Typography>
+      </div>
       <SystemUsageCards details={updatedMetrics} />
     </Box>
   );

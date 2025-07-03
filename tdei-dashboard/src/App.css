@@ -27,6 +27,20 @@
 .App-link {
   color: #61dafb;
 }
+.content__block {
+  margin-top: 100px;
+  padding: 0px 2%;
+}
+.data__container {
+  margin-bottom: 50px;
+}
+.data__title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
 
 @keyframes App-logo-spin {
   from {

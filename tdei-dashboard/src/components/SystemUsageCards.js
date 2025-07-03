@@ -31,11 +31,11 @@ export default function SystemUsageCards({ details }) {
   const totalSizeDownloadedGB = (datasetMetrics.totalDownloads?.totalSizeMB ?? 0) / 1024; 
   
   return (
-    <Box sx={{ width: '96%', height: 'auto', padding: '16px' }}>
-      <Grid container spacing={2}>
-        <Grid item xs={8}>
+    <Box className="data__container">
+      <Grid container spacing={4}>
+        <Grid item xs={12} sm={12} md={8}>
           <Grid container spacing={2}>
-            <Grid item xs={4}>
+            <Grid item xs={6} sm={4}>
               <Tooltip title="Total number of users in the system" disableInteractive>
                 <Box>
                   <DashboardCard
@@ -48,7 +48,7 @@ export default function SystemUsageCards({ details }) {
                 </Box>
               </Tooltip>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={6} sm={4}>
               <Tooltip title="Total number of project groups" disableInteractive>
                 <Box>
                   <DashboardCard
@@ -61,7 +61,7 @@ export default function SystemUsageCards({ details }) {
                 </Box>
               </Tooltip>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={4}>
               <Tooltip title="Total number of services available" disableInteractive>
                 <Box>
                   <DashboardCard
@@ -74,7 +74,7 @@ export default function SystemUsageCards({ details }) {
                 </Box>
               </Tooltip>
             </Grid>
-            <Grid item xs={6} sx={{ marginTop: '20px' }}>
+            <Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
               <Tooltip title="Number of datasets uploaded and total size uploaded" disableInteractive>
                 <Box>
                   <CustomTwoValuesCard
@@ -88,7 +88,7 @@ export default function SystemUsageCards({ details }) {
                 </Box>
               </Tooltip>
             </Grid>
-            <Grid item xs={6} sx={{ marginTop: '20px' }}>
+            <Grid item xs={12} sm={6} sx={{ marginTop: '20px' }}>
               <Tooltip title="Number of datasets downloaded and total size downloaded" disableInteractive>
                 <Box>
                   <CustomTwoValuesCard
@@ -104,7 +104,7 @@ export default function SystemUsageCards({ details }) {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={12} md={4}>
           <Tooltip title="Distribution of services by type (OSW, Flex, Pathways)" disableInteractive placement='top'>
             <Box>
               <Card sx={{
@@ -158,7 +158,7 @@ export default function SystemUsageCards({ details }) {
             </Box>
           </Tooltip>
         </Grid>
-        <Grid item xs={6} sx={{ marginTop: '10px' }}>
+        <Grid item xs={12} sm={6} sx={{ marginTop: '10px' }}>
           <Tooltip title="Dataset download statistics over time" disableInteractive>
             <Box>
               <Card sx={{ boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)', height: '375px' }}>
@@ -167,7 +167,7 @@ export default function SystemUsageCards({ details }) {
             </Box>
           </Tooltip>
         </Grid>
-        <Grid item xs={6} sx={{ marginTop: '10px' }}>
+        <Grid item xs={12} sm={6} sx={{ marginTop: '10px' }}>
           <Tooltip title="API metrics, including total API calls and calls per endpoint" disableInteractive>
             <Box>
               <ApiMetricsCard apiMetrics={apiCalls ?? {}} />
