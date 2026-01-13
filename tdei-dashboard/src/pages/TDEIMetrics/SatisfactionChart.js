@@ -89,5 +89,44 @@ export default function SatisfactionChart({ satisfactionRates }) {
     },
   };
 
-  return <Bar data={data} options={options} />;
+  return (
+    <>
+      <div aria-hidden="true" style={{ height: '100%', width: '100%' }}>
+        <Bar data={data} options={options} />
+      </div>
+      <table
+        style={{
+          position: 'absolute',
+          width: '1px',
+          height: '1px',
+          padding: 0,
+          margin: '-1px',
+          overflow: 'hidden',
+          clip: 'rect(0, 0, 0, 0)',
+          whiteSpace: 'nowrap',
+          border: 0,
+        }}
+      >
+        <caption>Satisfaction Rates</caption>
+        <thead>
+          <tr>
+            <th scope="col">Category</th>
+            <th scope="col">Satisfaction</th>
+          </tr>
+        </thead>
+        <tbody>
+          {categories.map((category, index) => (
+            <tr key={category}>
+              <td>{category}</td>
+              <td>
+                {originalValues[index] != null
+                  ? Number(originalValues[index]).toFixed(2)
+                  : 'Pending'}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
 }
