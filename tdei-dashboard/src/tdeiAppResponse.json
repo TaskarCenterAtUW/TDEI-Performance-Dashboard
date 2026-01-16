@@ -6,11 +6,10 @@
             "tripResults": {
                 "attempted": 10000,
                 "completed": 12700
-                
             },
             "satisfactionRates": {
                 "accessMap": 4.92,
-                "audiom": null,
+                "audiom": 3.25,
                 "walkshed": 4.71
             }
         },
