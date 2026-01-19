@@ -28,8 +28,8 @@ export default function SystemUsageCards({ details }) {
 
   // Convert totalSizeMB to GB 
   const totalSizeUploadedGB = (datasetMetrics.totalUploads?.totalSizeMB ?? 0) / 1024;
-  const totalSizeDownloadedGB = (datasetMetrics.totalDownloads?.totalSizeMB ?? 0) / 1024; 
-  
+  const totalSizeDownloadedGB = (datasetMetrics.totalDownloads?.totalSizeMB ?? 0) / 1024;
+
   return (
     <Box className="data__container">
       <Grid container spacing={4}>
@@ -82,7 +82,7 @@ export default function SystemUsageCards({ details }) {
                     subtitle1={'Uploads'}
                     value1={datasetMetrics.totalUploads?.count ?? '0'}
                     subtitle2={'Size Uploaded'}
-                    value2={totalSizeUploadedGB.toFixed(2) ?? '0'}  
+                    value2={totalSizeUploadedGB.toFixed(2) ?? '0'}
                     icon={<CloudUploadIcon fontSize="large" sx={{ color: '#8ec5fc' }} />}
                   />
                 </Box>
@@ -96,7 +96,7 @@ export default function SystemUsageCards({ details }) {
                     subtitle1={'Downloads'}
                     value1={datasetMetrics.totalDownloads?.count ?? '0'}
                     subtitle2={'Size Downloaded'}
-                    value2={totalSizeDownloadedGB.toFixed(2) ?? '0'} 
+                    value2={totalSizeDownloadedGB.toFixed(2) ?? '0'}
                     icon={<CloudDownloadIcon fontSize="large" sx={{ color: '#8ec5fc' }} />}
                   />
                 </Box>
@@ -116,7 +116,7 @@ export default function SystemUsageCards({ details }) {
                   boxShadow: 10,
                 },
               }}>
-                <Box sx={{height:'300px'}}>
+                <Box sx={{ height: '300px' }}>
                   <Typography variant="h6" sx={{
                     marginBottom: '12px',
                     marginTop: '12px',
@@ -127,27 +127,60 @@ export default function SystemUsageCards({ details }) {
                     Services By Type
                   </Typography>
                   {servicesData.length > 0 ? (
-                    <PieChart
-                      series={[
-                        {
-                          arcLabel: (item) => `${Number(item.value ?? 0).toFixed(2)}%`,
-                          arcLabelMinAngle: 10, 
-                          arcLabelRadius: '80%', 
-                          data: servicesData,
-                          valueFormatter,
-                        },
-                      ]}
-                      tooltip={{ show: false }}
-                      sx={{
-                        [`& .${pieArcLabelClasses.root}`]: {
-                          fontWeight: 'bold',
-                          fill: '#fff',
-                          fontSize:'12px'
-                        },
-                      }}
-                      width={400}
-                      height={210}
-                    />
+                    <>
+                      <div aria-hidden="true">
+                        <PieChart
+                          series={[
+                            {
+                              arcLabel: (item) => `${Number(item.value ?? 0).toFixed(2)}%`,
+                              arcLabelMinAngle: 10,
+                              arcLabelRadius: '80%',
+                              data: servicesData,
+                              valueFormatter,
+                            },
+                          ]}
+                          tooltip={{ show: false }}
+                          sx={{
+                            [`& .${pieArcLabelClasses.root}`]: {
+                              fontWeight: 'bold',
+                              fill: '#fff',
+                              fontSize: '12px'
+                            },
+                          }}
+                          width={400}
+                          height={210}
+                        />
+                      </div>
+                      <table
+                        style={{
+                          position: 'absolute',
+                          width: '1px',
+                          height: '1px',
+                          padding: 0,
+                          margin: '-1px',
+                          overflow: 'hidden',
+                          clip: 'rect(0, 0, 0, 0)',
+                          whiteSpace: 'nowrap',
+                          border: 0,
+                        }}
+                      >
+                        <caption>Services By Type</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">Service Type</th>
+                            <th scope="col">Percentage</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {servicesData.map((data) => (
+                            <tr key={data.id}>
+                              <td>{data.label}</td>
+                              <td>{Number(data.value ?? 0).toFixed(2)}%</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </>
                   ) : (
                     <Typography sx={{ fontWeight: 'bold', color: '#333' }}>
                       No Data Available
@@ -162,7 +195,7 @@ export default function SystemUsageCards({ details }) {
           <Tooltip title="Dataset download statistics over time" disableInteractive>
             <Box>
               <Card sx={{ boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)', height: '375px' }}>
-              <CustomBarChart data={datasetMetrics.downloadsPerMonth ?? {}} />
+                <CustomBarChart data={datasetMetrics.downloadsPerMonth ?? {}} />
               </Card>
             </Box>
           </Tooltip>
@@ -174,7 +207,7 @@ export default function SystemUsageCards({ details }) {
             </Box>
           </Tooltip>
         </Grid>
-      </Grid>
-    </Box>
+      </Grid >
+    </Box >
   );
 }
