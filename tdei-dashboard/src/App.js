@@ -23,6 +23,7 @@ function App() {
       top: ref.current.offsetTop - 100,
       behavior: "smooth",
     });
+    ref.current.focus({ preventScroll: true });
   };
 
   const drawerWidth = 250;
@@ -143,13 +144,13 @@ function App() {
       </nav>
       
       <Box className="content__block">
-        <Box ref={systemUsageRef}>
+        <Box ref={systemUsageRef} tabIndex="-1" sx={{outline: 'none'}}>
           <SystemUsageMetrics />
         </Box>
-        <Box ref={dataMetricsRef}>
+        <Box ref={dataMetricsRef} tabIndex="-1" sx={{outline: 'none'}}>
           <DataMetrics />
         </Box>
-        <Box ref={tdeiMetricsRef}>
+        <Box ref={tdeiMetricsRef} tabIndex="-1" sx={{outline: 'none'}}>
           <TDEIMetrics />
         </Box>
       </Box>

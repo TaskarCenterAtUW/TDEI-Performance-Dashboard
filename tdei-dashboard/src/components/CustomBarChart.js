@@ -98,7 +98,42 @@ const CustomBarChart = ({ data }) => {
     },
   };
 
-  return <Bar data={chartData} options={options} />;
+  const visuallyHiddenStyle = {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: 0,
+    margin: '-1px',
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    border: 0,
+  };
+
+  return (
+    <>
+      <div aria-hidden="true" style={{ height: '100%', width: '100%' }}>
+        <Bar data={chartData} options={options} />
+      </div>
+      <table style={visuallyHiddenStyle}>
+        <caption>Monthly Downloads Data</caption>
+        <thead>
+          <tr>
+            <th scope="col">Month</th>
+            <th scope="col">Downloads</th>
+          </tr>
+        </thead>
+        <tbody>
+          {latestMonths.map((month, index) => (
+            <tr key={month}>
+              <td>{month}</td>
+              <td>{downloadCounts[index]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
 };
 
 export default CustomBarChart;
